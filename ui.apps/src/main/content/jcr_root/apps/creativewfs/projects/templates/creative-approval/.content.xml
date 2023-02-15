@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:description="Creates a Project for Creative Approval Process"
+    jcr:primaryType="cq:Template"
+    jcr:title="Creative Approval"
+    includeInCreateProject="{Boolean}true"
+    ranking="{Long}1"
+    wizard="/libs/cq/core/content/projects/wizard/steps/defaultproject.html">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        detailsHref="/projects/details.html"/>
+    <gadgets jcr:primaryType="nt:unstructured">
+        <projectinfo
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Project Info"
+            sling:resourceType="cq/gui/components/projects/admin/pod/projectinfopod"
+            cardWeight="50"/>
+        <team
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Team"
+            sling:resourceType="cq/gui/components/projects/admin/pod/teampod"
+            cardWeight="60"/>
+        <work
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Workflows"
+            sling:resourceType="cq/gui/components/projects/admin/pod/workpod"
+            cardWeight="80"/>
+        <tasks
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Tasks"
+            sling:resourceType="cq/gui/components/projects/admin/pod/taskpod"
+            cardWeight="100"/>
+    </gadgets>
+    <roles jcr:primaryType="nt:unstructured">
+        <pmm
+            jcr:primaryType="nt:unstructured"
+            jcr:title="PMM"
+            roleclass="editor"
+            roleid="pmm"/>
+        <copywriter
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Copywriter"
+            roleclass="editor"
+            roleid="copywriter"/>
+        <projectmanager
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Project Manager"
+            roleclass="editor"
+            roleid="projectmanager"/>
+        <creativedirector
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Creative Director"
+            roleclass="editor"
+            roleid="creativedirector"/>
+        <compliance
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Compliance"
+            roleclass="editor"
+            roleid="compliance"/>
+    </roles>
+    <workflows
+        jcr:primaryType="nt:unstructured"
+        tags="[]">
+        <models jcr:primaryType="nt:unstructured">
+            <creativeapproval
+                jcr:primaryType="nt:unstructured"
+                modelId="/var/workflow/models/creative-assets-review-approval"
+                wizard="/apps/AEMaaCS Transition/projects/workflowwizards/creative-approval-wizard.html"/>
+        </models>
+    </workflows>
+</jcr:root>

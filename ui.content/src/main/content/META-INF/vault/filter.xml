@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/wknd" mode="merge"/>
-    <filter root="/content/wknd" mode="merge"/>
-    <filter root="/content/dam/wknd" mode="merge"/>
-    <filter root="/content/experience-fragments/wknd" mode="merge"/>
+    <filter root="/home/users" />
+    <filter root="/home/groups" />
+    <filter root="/conf/global/settings/workflow/models/creative-assets-review-approval"/>
+    <filter root="/conf/global/settings/workflow/models/photo-shoot-review-approval"/>
+    <filter root="/var/workflow/models/creative-assets-review-approval"/>
+    <filter root="/var/workflow/models/photo-shoot-review-approval"/>
 </workspaceFilter>

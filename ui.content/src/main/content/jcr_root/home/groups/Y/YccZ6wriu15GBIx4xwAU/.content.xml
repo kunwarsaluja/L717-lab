@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    cq:lastModified="{Date}2019-08-14T06:55:07.802-04:00"
+    cq:lastModifiedBy="admin"
+    jcr:lastModified="{Date}2019-08-14T06:55:07.802-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="bc86e77d-1a65-31f1-84c6-06e3915efd0b"
+    rep:authorizableId="cwf-photographers"
+    rep:members="{WeakReference}[a18679c0-de90-3e79-a1e3-ce8b4b388bed]"
+    rep:principalName="cwf-photographers">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        aboutMe="Photographer role for uploading photos taken into AEM and initiate the Photo approval workflow."
+        givenName="Photo Graphers"/>
+</jcr:root>

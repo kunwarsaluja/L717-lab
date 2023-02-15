@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    cq:lastModified="{Date}2019-08-28T10:09:53.900-04:00"
+    cq:lastModifiedBy="admin"
+    jcr:lastModified="{Date}2019-08-28T10:09:53.900-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="300a2bd0-eacf-3f3c-b084-9cdea7b56c00"
+    rep:authorizableId="copywriter"
+    rep:members="{WeakReference}[8c1fec91-d9c0-3282-8d0f-f899a237883f]"
+    rep:principalName="copywriter">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        givenName="Copywriters"/>
+</jcr:root>

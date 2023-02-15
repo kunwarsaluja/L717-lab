@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    cq:lastModified="{Date}2019-08-28T10:08:15.669-04:00"
+    cq:lastModifiedBy="admin"
+    jcr:lastModified="{Date}2019-08-28T10:08:15.669-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="1370fde7-0904-32e0-ba51-902c69971e65"
+    rep:authorizableId="productmarketing"
+    rep:members="{WeakReference}[4d9ee997-318d-3f59-9605-cdbc60c2f934]"
+    rep:principalName="productmarketing">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        givenName="Product Marketing Managers"/>
+</jcr:root>

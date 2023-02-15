@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    cq:lastModified="{Date}2019-08-28T10:10:47.202-04:00"
+    cq:lastModifiedBy="admin"
+    jcr:lastModified="{Date}2019-08-28T10:10:47.202-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="fbec756b-95a6-3e3f-b15f-1a282fe620f4"
+    rep:authorizableId="project managers"
+    rep:members="{WeakReference}[67f57bc6-9b53-373a-8d11-1f477ff806c7]"
+    rep:principalName="project managers">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        givenName="Project Managers"/>
+</jcr:root>

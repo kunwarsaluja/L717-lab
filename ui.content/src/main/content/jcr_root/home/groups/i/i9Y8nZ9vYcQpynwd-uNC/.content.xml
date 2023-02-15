@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    cq:lastModified="{Date}2019-08-14T07:01:42.739-04:00"
+    cq:lastModifiedBy="admin"
+    jcr:lastModified="{Date}2019-08-14T07:01:42.739-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="751e7610-97c4-3792-a5f4-9e0f45485940"
+    rep:authorizableId="cwf-creativedirectors"
+    rep:members="{WeakReference}[a7f1e067-0c95-31e6-b790-78466c0d8de2]"
+    rep:principalName="cwf-creativedirectors">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        aboutMe="The role of creative director who participate in Photo approval / Selection process"
+        givenName="Creative Directors"/>
+</jcr:root>

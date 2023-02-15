@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="rep:Group"
+    jcr:uuid="26c57ab4-7880-313a-84e4-8de8cdbd28db"
+    rep:authorizableId="creative-wf-project-admins"
+    rep:members="{WeakReference}[ac3d80d5-c018-324d-8b61-817887ed5417,751e7610-97c4-3792-a5f4-9e0f45485940]"
+    rep:principalName="creative-wf-project-admins">
+    <profile
+        jcr:primaryType="nt:unstructured"
+        givenName="Creative Project Administrators"/>
+</jcr:root>

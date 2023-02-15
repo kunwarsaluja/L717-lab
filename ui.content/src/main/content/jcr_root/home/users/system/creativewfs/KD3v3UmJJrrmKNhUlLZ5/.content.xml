@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal"
+    jcr:primaryType="rep:SystemUser"
+    jcr:uuid="05f5f6d0-1481-3d2d-89f7-fa8b45f31b3d"
+    rep:authorizableId="AEMaaCS Transitionystemuser"
+    rep:principalName="AEMaaCS Transitionystemuser"/>
