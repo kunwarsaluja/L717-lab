@@ -15,40 +15,30 @@
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>aem-cs-transition.ui.content</artifactId>
-    <packaging>content-package</packaging>
+    <artifactId>aem-cs-transition.ui.apps.structure</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Summit L771 - UI content</name>
-    <description>UI content package for Summit L771</description>
+    <packaging>content-package</packaging>
+    <name>Summit L771 - Repository Structure Package</name>
+    <description>
+        Empty package that defines the structure of the Adobe Experience Manager repository the Code packages in this project deploy into.
+        Any roots in the Code packages of this project should have their parent enumerated in the Filters list below.
+    </description>
 
-    <!-- ====================================================================== -->
-    <!-- B U I L D   D E F I N I T I O N                                        -->
-    <!-- ====================================================================== -->
     <build>
         <plugins>
-            <!-- ====================================================================== -->
-            <!-- V A U L T   P A C K A G E   P L U G I N S                              -->
-            <!-- ====================================================================== -->
             <plugin>
                 <groupId>org.apache.jackrabbit</groupId>
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <group>com.adobe.summit23.l717</group>
-                    <name>aem-cs-transition.ui.content</name>
-                    <packageType>content</packageType>
-                    <accessControlHandling>merge</accessControlHandling>
                     <properties>
                         <cloudManagerTarget>none</cloudManagerTarget>
                     </properties>
-                    <dependencies>
-        <dependency>
-            <groupId>com.adobe.summit23.l717</groupId>
-            <artifactId>aem-cs-transition.ui.apps</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            
-        </dependency>
-                    </dependencies>
+                    <allowIndexDefinitions>true</allowIndexDefinitions>
+                    <filters>
+                        <filter><root>/apps</root></filter>
+                        <filter><root>/apps/aem-cs-transition</root></filter>
+                    </filters>
                 </configuration>
             </plugin>
             <plugin>
@@ -62,18 +52,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- ====================================================================== -->
-    <!-- D E P E N D E N C I E S                                                -->
-    <!-- ====================================================================== -->
-    <dependencies>
-        <dependency>
-            <groupId>com.adobe.summit23.l717</groupId>
-            <artifactId>aem-cs-transition.ui.apps</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <type>zip</type>
-        </dependency>
-    </dependencies>
 </project>
 
 

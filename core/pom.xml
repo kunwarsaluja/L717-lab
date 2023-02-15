@@ -134,9 +134,10 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.adobe.aem</groupId>
-            <artifactId>uber-jar</artifactId>
-            <classifier>apis</classifier>
+          <groupId>com.adobe.aem</groupId>
+          <artifactId>aem-sdk-api</artifactId>
+          <version>${aem.sdk.api}</version>
+          <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.sling</groupId>
@@ -171,3 +172,4 @@
         </dependency>
     </dependencies>
 </project>
+

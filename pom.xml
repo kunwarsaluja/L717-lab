@@ -22,16 +22,16 @@
     <artifactId>aem-cs-transition</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <description>aem-cs-transition</description>
-
+    <description>Summit L771 Parent</description>
     <modules>
+        <module>all</module>
+        <module>analyse</module>
         <module>core</module>
         <module>ui.apps</module>
+        <module>ui.apps.structure</module>
+        <module>ui.config</module>
         <module>ui.content</module>
-        <module>it.tests</module>
-        <module>it.launcher</module>
     </modules>
-
     <properties>
         <aem.host>localhost</aem.host>
         <aem.port>4502</aem.port>
@@ -41,11 +41,28 @@
         <sling.password>admin</sling.password>
         <vault.user>admin</vault.user>
         <vault.password>admin</vault.password>
-        <core.wcm.components.version>2.4.0</core.wcm.components.version>
-
+        <core.wcm.components.version>2.8.0</core.wcm.components.version>
+        <bnd.version>5.1.2</bnd.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <aemanalyser.version>1.1.2</aemanalyser.version>
+        <aem.sdk.api>2023.1.10912.20230130T173736Z-230100</aem.sdk.api>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>local-repo</id>
+            <url>file:nonadobedependencies</url>
+            <name>Repository</name>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -68,12 +85,6 @@
                 <version>3.0.1</version>
                 <inherited>true</inherited>
             </plugin>
-            <!-- Maven Jar Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-            </plugin>
             <!-- Maven Enforcer Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -90,8 +101,7 @@
                                     <version>[3.3.9,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <message>Project must be compiled
-                                        with Java 8 or higher</message>
+                                    <message>Project must be compiled with Java 8 or higher</message>
                                     <version>1.8.0</version>
                                 </requireJavaVersion>
                             </rules>
@@ -108,34 +118,106 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- Maven IntelliJ IDEA Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-idea-plugin</artifactId>
-                <version>2.2.1</version>
-                <configuration>
-                    <jdkLevel>1.8</jdkLevel>
-                    <linkModules>true</linkModules>
-                    <downloadSources>true</downloadSources>
-                </configuration>
-            </plugin>
-            <!-- Maven Eclipse Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.10</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                </configuration>
-            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
                 <!-- Maven Clean Plugin -->
                 <plugin>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>maven-sling-plugin</artifactId>
+                    <version>2.2.0</version>
+                    <configuration>
+                        <slingUrl>http://${aem.host}:${aem.port}/system/console</slingUrl>
+                        <deploymentMethod>WebConsole</deploymentMethod>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>4.1.0</version>
+                    <inherited>true</inherited>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.7.6</version>
+                    <configuration>
+                        <nodeVersion>v10.13.0</nodeVersion>
+                        <npmVersion>6.9.0</npmVersion>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>install node and npm</id>
+                            <goals>
+                                <goal>install-node-and-npm</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>npm install</id>
+                            <goals>
+                                <goal>npm</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- Maven Jar Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.1.2</version>
+                </plugin>
+                <!-- Maven Clean Plugin -->
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.0.0</version>
+                </plugin>
+                <!-- BND Maven Plugin -->
+                <plugin>
+                    <groupId>biz.aQute.bnd</groupId>
+                    <artifactId>bnd-maven-plugin</artifactId>
+                    <version>${bnd.version}</version>
+                    <executions>
+                        <execution>
+                            <id>bnd-process</id>
+                            <goals>
+                                <goal>bnd-process</goal>
+                            </goals>
+                            <configuration>
+                                <bnd><![CDATA[
+Bundle-Category: ${componentGroupName}
+
+# export all versioned packages except for conditional ones (https://github.com/bndtools/bnd/issues/3721#issuecomment-579026778)
+-exportcontents: ${removeall;${packages;VERSIONED};${packages;CONDITIONAL}}
+
+# reproducible builds (https://github.com/bndtools/bnd/issues/3521)
+-noextraheaders: true
+-snapshot: SNAPSHOT
+
+Bundle-DocURL:
+-plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
+-plugin org.apache.sling.bnd.models.ModelsScannerPlugin
+                                ]]></bnd>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.sling</groupId>
+                            <artifactId>org.apache.sling.caconfig.bnd-plugin</artifactId>
+                            <version>1.0.2</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.sling</groupId>
+                            <artifactId>org.apache.sling.bnd.models</artifactId>
+                            <version>1.0.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>biz.aQute.bnd</groupId>
+                    <artifactId>bnd-baseline-maven-plugin</artifactId>
+                    <version>${bnd.version}</version>
                 </plugin>
                 <!-- Maven Resources Plugin -->
                 <plugin>
@@ -147,7 +229,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.1</version>
+                    <version>3.8.1</version>
                 </plugin>
                 <!-- Maven Installer Plugin -->
                 <plugin>
@@ -179,8 +261,8 @@
                 <!-- Apache Sling Plugin -->
                 <plugin>
                     <groupId>org.apache.sling</groupId>
-                    <artifactId>maven-sling-plugin</artifactId>
-                    <version>2.2.0</version>
+                    <artifactId>sling-maven-plugin</artifactId>
+                    <version>2.4.0</version>
                     <configuration>
                         <slingUrl>http://${aem.host}:${aem.port}/system/console</slingUrl>
                         <deploymentMethod>WebConsole</deploymentMethod>
@@ -190,26 +272,45 @@
                 <plugin>
                     <groupId>org.apache.sling</groupId>
                     <artifactId>htl-maven-plugin</artifactId>
-                    <version>1.0.6</version>
+                    <version>1.3.4-1.4.0</version>
                     <configuration>
                         <failOnWarnings>true</failOnWarnings>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>validate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
                 <!-- Jackrabbit FileVault Package Plugin -->
                 <plugin>
                     <groupId>org.apache.jackrabbit</groupId>
                     <artifactId>filevault-package-maven-plugin</artifactId>
-                    <version>1.0.3</version>
+                    <version>1.1.4</version>
                     <configuration>
+                        <skipValidation>true</skipValidation>
                         <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+                        <properties>
+                            <cloudManagerTarget>none</cloudManagerTarget>
+                        </properties>
+                        <validatorsSettings>
+                            <jackrabbit-nodetypes>
+                                <options>
+                                    <!-- use the nodetypes and namespaces from the aem-nodetypes.jar provided in the plugin dependencies -->
+                                    <cnds>tccl:aem.cnd</cnds>
+                                </options>
+                            </jackrabbit-nodetypes>
+                        </validatorsSettings>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>biz.netcentric.aem</groupId>
+                            <artifactId>aem-nodetypes</artifactId>
+                            <version>6.5.5.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <!-- AEM Analyser Plugin -->
+                <plugin>
+                    <groupId>com.adobe.aem</groupId>
+                    <artifactId>aemanalyser-maven-plugin</artifactId>
+                    <version>${aemanalyser.version}</version>
+                    <extensions>true</extensions>
                 </plugin>
                 <!-- Content Package Plugin -->
                 <plugin>
@@ -222,13 +323,6 @@
                         <userId>${vault.user}</userId>
                         <password>${vault.password}</password>
                     </configuration>
-                </plugin>
-                <!-- Apache Felix Bundle Plugin -->
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>4.1.0</version>
-                    <inherited>true</inherited>
                 </plugin>
                 <!-- Maven Enforcer Plugin -->
                 <plugin>
@@ -349,6 +443,18 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <repository>
+                    <id>adobe-aem-releases</id>
+                    <name>Adobe AEM Repository</name>
+                    <url>https://downloads.experiencecloud.adobe.com/content/maven/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
             </repositories>
 
             <pluginRepositories>
@@ -371,12 +477,12 @@
         <profile>
             <id>autoInstallBundle</id>
             <!--
-                To enable this feature for a bundle, the maven-sling-plugin
+                To enable this feature for a bundle, the sling-maven-plugin
                 (without configuration) needs to be included:
 
                 <plugin>
                     <groupId>org.apache.sling</groupId>
-                    <artifactId>maven-sling-plugin</artifactId>
+                    <artifactId>sling-maven-plugin</artifactId>
                  </plugin>
             -->
             <activation>
@@ -387,7 +493,7 @@
                     <plugins>
                         <plugin>
                             <groupId>org.apache.sling</groupId>
-                            <artifactId>maven-sling-plugin</artifactId>
+                            <artifactId>sling-maven-plugin</artifactId>
                             <executions>
                                 <execution>
                                     <id>install-bundle</id>
@@ -481,7 +587,6 @@
                 </pluginManagement>
             </build>
         </profile>
-
     </profiles>
 
 
@@ -528,13 +633,6 @@
                 <scope>provided</scope>
             </dependency>
             <!-- Adobe AEM Dependencies -->
-            <dependency>
-                <groupId>com.adobe.aem</groupId>
-                <artifactId>uber-jar</artifactId>
-                <version>6.5.0</version>
-                <classifier>apis</classifier>
-                <scope>provided</scope>
-            </dependency>
             <dependency>
                 <groupId>com.adobe.cq</groupId>
                 <artifactId>core.wcm.components.all</artifactId>
@@ -625,6 +723,12 @@
                 <artifactId>slf4j-test</artifactId>
                 <version>1.0.1</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.adobe.aem</groupId>
+                <artifactId>aem-sdk-api</artifactId>
+                <version>${aem.sdk.api}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

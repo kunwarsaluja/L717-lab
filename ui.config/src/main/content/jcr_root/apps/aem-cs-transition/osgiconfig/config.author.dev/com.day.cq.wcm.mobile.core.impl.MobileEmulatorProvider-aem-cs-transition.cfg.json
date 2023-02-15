@@ -1,0 +1,4 @@
+{
+"mobile.resourceTypes":["aem-cs-transition/components/structure/page"],
+"README":"Indicate which page resource types should display the mobile emulators."
+}
