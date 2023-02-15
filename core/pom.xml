@@ -26,6 +26,7 @@
     <artifactId>aem-cs-transition.core</artifactId>
     <packaging>bundle</packaging>
     <name>aem-cs-transition - Core</name>
+    <version>1.0.0-SNAPSHOT</version>
     <description>Core bundle for aem-cs-transition</description>
     <build>
         <plugins>
