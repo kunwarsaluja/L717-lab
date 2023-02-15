@@ -3,6 +3,6 @@
     jcr:primaryType="rep:ACL">
     <allow
         jcr:primaryType="rep:GrantACE"
-        rep:principalName="AEMaaCS Transitionystemuser"
+        rep:principalName="aem-cs-transitionystemuser"
         rep:privileges="{Name}[jcr:versionManagement,jcr:read,rep:write,jcr:lockManagement]"/>
 </jcr:root>
