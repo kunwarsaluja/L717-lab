@@ -1,6 +1,0 @@
-{
-"org.apache.sling.commons.log.file":"logs/project-aem-cs-transition.log",
-"org.apache.sling.commons.log.level":"info",
-"org.apache.sling.commons.log.names":["com.adobe.summit23.l717"],
-"org.apache.sling.commons.log.pattern":"{0,date,yyyy-MM-dd HH:mm:ss.SSS} {4} [{3}] {5}"
-}
