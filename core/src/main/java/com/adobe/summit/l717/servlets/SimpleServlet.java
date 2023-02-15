@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.adobe.summit23.l717.core.servlets;
+package com.adobe.summit23.l717.servlets;
 
 import com.day.cq.commons.jcr.JcrConstants;
 import org.apache.sling.api.SlingHttpServletRequest;

@@ -22,7 +22,7 @@
     <artifactId>aem-cs-transition</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
-    <description>AEMaaCS Transition</description>
+    <description>aem-cs-transition</description>
 
     <modules>
         <module>core</module>

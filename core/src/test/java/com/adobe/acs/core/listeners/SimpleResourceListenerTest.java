@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.adobe.summit23.l717.core.listeners;
+package com.adobe.summit23.l717.listeners;
 
 import java.util.Collections;
 import java.util.List;

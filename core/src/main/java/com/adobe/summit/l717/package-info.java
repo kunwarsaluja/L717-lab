@@ -14,6 +14,6 @@
  *  limitations under the License.
  */
 @Version("1.0")
-package com.adobe.summit23.l717.core;
+package com.adobe.summit23.l717;
 
 import org.osgi.annotation.versioning.Version;

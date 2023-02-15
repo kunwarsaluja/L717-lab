@@ -34,8 +34,8 @@
     <!-- ====================================================================== -->
     <artifactId>aem-cs-transition.it.tests</artifactId>
     <packaging>bundle</packaging>
-    <name>AEMaaCS Transition - Integration Tests Bundles</name>
-    <description>Bundles for Integration Tests for AEMaaCS Transition</description>
+    <name>aem-cs-transition - Integration Tests Bundles</name>
+    <description>Bundles for Integration Tests for aem-cs-transition</description>
 
     <!-- <scm>
         <connection></connection>

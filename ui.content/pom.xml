@@ -34,8 +34,8 @@
     <!-- ====================================================================== -->
     <artifactId>aem-cs-transition.ui.content</artifactId>
     <packaging>content-package</packaging>
-    <name>AEMaaCS Transition - UI content</name>
-    <description>UI content package for AEMaaCS Transition</description>
+    <name>aem-cs-transition - UI content</name>
+    <description>UI content package for aem-cs-transition</description>
 
     <!-- <scm>
         <connection></connection>
@@ -58,7 +58,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <acHandling>merge_preserve</acHandling>
-                    <group>AEMaaCS Transition</group>
+                    <group>aem-cs-transition</group>
                 </configuration>
             </plugin>
             <plugin>

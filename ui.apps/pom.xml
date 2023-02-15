@@ -34,8 +34,8 @@
     <!-- ====================================================================== -->
     <artifactId>aem-cs-transition.ui.apps</artifactId>
     <packaging>content-package</packaging>
-    <name>AEMaaCS Transition - UI apps</name>
-    <description>UI apps package for AEMaaCS Transition</description>
+    <name>aem-cs-transition - UI apps</name>
+    <description>UI apps package for aem-cs-transition</description>
 
     <!-- <scm>
         <connection></connection>
@@ -58,12 +58,12 @@
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <group>AEMaaCS Transition</group>
+                    <group>aem-cs-transition</group>
                     <embeddeds>
                         <embedded>
                             <groupId>com.adobe.summit23.l717</groupId>
                             <artifactId>aem-cs-transition.core</artifactId>
-                            <target>/apps/AEMaaCS Transition/install</target>
+                            <target>/apps/aem-cs-transition/install</target>
                         </embedded>
                     </embeddeds>
                     <subPackages>

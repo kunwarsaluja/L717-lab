@@ -31,8 +31,8 @@
     <!-- ====================================================================== -->
     <artifactId>aem-cs-transition.it.launcher</artifactId>
     <packaging>jar</packaging>
-    <name>AEMaaCS Transition - Integration Tests Launcher</name>
-    <description>Integration Tests Launcher for AEMaaCS Transition</description>
+    <name>aem-cs-transition - Integration Tests Launcher</name>
+    <description>Integration Tests Launcher for aem-cs-transition</description>
 
     <!-- <scm>
         <connection></connection>

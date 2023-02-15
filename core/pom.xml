@@ -25,8 +25,8 @@
     </parent>
     <artifactId>aem-cs-transition.core</artifactId>
     <packaging>bundle</packaging>
-    <name>AEMaaCS Transition - Core</name>
-    <description>Core bundle for AEMaaCS Transition</description>
+    <name>aem-cs-transition - Core</name>
+    <description>Core bundle for aem-cs-transition</description>
     <build>
         <plugins>
             <plugin>
@@ -65,7 +65,7 @@
                             *
                         </Import-Package>
                         <Sling-Model-Packages>
-                            com.adobe.summit23.l717.core
+                            com.adobe.summit23.l717
                         </Sling-Model-Packages>
                         <_dsannotations>*</_dsannotations>
                         <_metatypeannotations>*</_metatypeannotations>
