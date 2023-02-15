@@ -25,7 +25,7 @@
     <parent>
         <groupId>com.adobe.summit23.l717</groupId>
         <artifactId>aem-cs-transition</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -104,7 +104,7 @@
         <dependency>
             <groupId>com.adobe.summit23.l717</groupId>
             <artifactId>aem-cs-transition.core</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
